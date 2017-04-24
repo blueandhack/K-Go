@@ -112,7 +112,7 @@ func main() {
 	}
 	defer file.Close()
 
-	file.WriteString("\xEF\xBB\xBF")
+	//file.WriteString("\xEF\xBB\xBF")
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
@@ -131,7 +131,7 @@ func main() {
 	}
 	defer fileTwo.Close()
 
-	fileTwo.WriteString("\xEF\xBB\xBF")
+	//fileTwo.WriteString("\xEF\xBB\xBF")
 	writerTwo := csv.NewWriter(fileTwo)
 	defer writerTwo.Flush()
 
