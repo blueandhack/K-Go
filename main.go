@@ -6,6 +6,7 @@ import (
 	"encoding/csv"
 	"io"
 	"strconv"
+	"math"
 )
 
 /*
@@ -19,6 +20,13 @@ type kNNPoint struct {
 	x     int
 	y     int
 	setNO int
+}
+
+type sortedPoint struct {
+	distance float64
+	x        int
+	y        int
+	setNO    int
 }
 
 func main() {
@@ -114,20 +122,41 @@ func main() {
 	points[offices[0].x][offices[0].y] = "@"
 
 	// office
-	// x=9, y=19
-	offices[1].x = 9
-	offices[1].y = 19
+	// x=39, y=9
+	offices[1].x = 39
+	offices[1].y = 9
 	offices[1].setNO = 1
 
 	points[offices[1].x][offices[1].y] = "@"
 
 	// office
-	// x=19, y=29
-	offices[2].x = 19
-	offices[2].y = 29
+	// x=39, y=39
+	offices[2].x = 39
+	offices[2].y = 39
 	offices[2].setNO = 1
 
 	points[offices[2].x][offices[2].y] = "@"
+
+	fmt.Print("Police offices: \n")
+	for i := 0; i < 3; i++ {
+		fmt.Printf("(%d,%d)", offices[i].x, offices[i].y)
+	}
+	fmt.Println()
+	fmt.Println()
+
+	fmt.Print("Fist set (Team 1): \n")
+	for i := 0; i < 30; i++ {
+		fmt.Printf("(%d,%d)", setOne[i].x, setOne[i].y)
+	}
+	fmt.Println()
+	fmt.Println()
+
+	fmt.Print("Second set (Team 2): \n")
+	for i := 0; i < 30; i++ {
+		fmt.Printf("(%d,%d)", setTwo[i].x, setTwo[i].y)
+	}
+	fmt.Println()
+	fmt.Println()
 
 	for x := 49; x >= 0; x-- {
 		fmt.Println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
@@ -138,4 +167,99 @@ func main() {
 		fmt.Print("\n")
 	}
 	fmt.Println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+
+	var getPointsOne = [3][30] sortedPoint{}
+	var getPointsTwo = [3][30] sortedPoint{}
+
+	for k := 0; k < 3; k++ {
+		for i := 0; i < 30; i++ {
+			absX := math.Abs(float64(offices[k].x - setOne[i].x))
+			absY := math.Abs(float64(offices[k].y - setOne[i].y))
+			distance := math.Sqrt(math.Pow(absX, 2) + math.Pow(absY, 2))
+			//fmt.Println(distance)
+			getPointsOne[k][i].distance = distance
+			getPointsOne[k][i].setNO = setOne[i].setNO
+			getPointsOne[k][i].x = setOne[i].x
+			getPointsOne[k][i].y = setOne[i].y
+
+		}
+		for i := 0; i < 30; i++ {
+			absX := math.Abs(float64(offices[k].x - setTwo[i].x))
+			absY := math.Abs(float64(offices[k].y - setTwo[i].y))
+			distance := math.Sqrt(math.Pow(absX, 2) + math.Pow(absY, 2))
+			//fmt.Println(distance)
+			getPointsTwo[k][i].distance = distance
+			getPointsTwo[k][i].setNO = setTwo[i].setNO
+			getPointsTwo[k][i].x = setTwo[i].x
+			getPointsTwo[k][i].y = setTwo[i].y
+		}
+		//fmt.Println()
+	}
+
+	var getPoints = [3][60] sortedPoint{}
+
+	for i := 0; i < 3; i++ {
+		s := 0
+		for j := 0; j < 30; j++ {
+			getPoints[i][s].x = getPointsOne[i][j].x
+			getPoints[i][s].y = getPointsOne[i][j].y
+			getPoints[i][s].distance = getPointsOne[i][j].distance
+			//fmt.Println(getPointsOne[i][j].distance)
+			getPoints[i][s].setNO = getPointsOne[i][j].setNO
+			s++
+		}
+		for j := 0; j < 30; j++ {
+			getPoints[i][s].x = getPointsTwo[i][j].x
+			getPoints[i][s].y = getPointsTwo[i][j].y
+			getPoints[i][s].distance = getPointsTwo[i][j].distance
+			//fmt.Println(getPointsTwo[i][j].distance)
+			getPoints[i][s].setNO = getPointsTwo[i][j].setNO
+			s++
+		}
+		//fmt.Println()
+	}
+
+	//for i := 0; i < 3; i++ {
+	//	for j := 0; j < 60; j++ {
+	//		fmt.Println(getPoints[i][j].x)
+	//		//fmt.Println(getPoints[i][j].y)
+	//		//fmt.Println(getPoints[i][j].distance)
+	//	}
+	//	fmt.Println("+++++++++++++++++++++++++++++++++")
+	//}
+
+	for s := 0; s < 3; s++ {
+		for i := 1; i < len(getPoints[s]); i++ {
+			for j := 0; j < len(getPoints[s])-i; j++ {
+				if getPoints[s][j].distance > getPoints[s][j+1].distance {
+					getPoints[s][j], getPoints[s][j+1] = getPoints[s][j+1], getPoints[s][j]
+				}
+			}
+		}
+	}
+
+	fmt.Println("3 pointes close office 1: ")
+
+	for i := 0; i < 3; i++ {
+		fmt.Printf("(%d,%d) ", getPoints[0][i].x, getPoints[0][i].y)
+	}
+
+	fmt.Println()
+
+	fmt.Println("3 pointes close office 2: ")
+
+	for i := 0; i < 3; i++ {
+		fmt.Printf("(%d,%d) ", getPoints[1][i].x, getPoints[1][i].y)
+	}
+
+	fmt.Println()
+
+	fmt.Println("3 pointes close office 3: ")
+
+	for i := 0; i < 3; i++ {
+		fmt.Printf("(%d,%d) ", getPoints[2][i].x, getPoints[2][i].y)
+	}
+
+	fmt.Println()
+
 }

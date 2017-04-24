@@ -25,8 +25,8 @@ func main() {
 		x = r.Intn(50)
 		y = r.Intn(50)
 		if x != 9 && y != 9 {
-			if x != 9 && y != 19 {
-				if x != 19 && y != 29 {
+			if x != 39 && y != 9 {
+				if x != 39 && y != 39 {
 					break
 				}
 			}
@@ -47,8 +47,8 @@ func main() {
 				}
 			}
 			if x != 9 && y != 9 {
-				if x != 9 && y != 19 {
-					if x != 19 && y != 29 {
+				if x != 39 && y != 9 {
+					if x != 39 && y != 39 {
 						setOne[i].x = x
 						setOne[i].y = y
 						break
@@ -67,8 +67,8 @@ func main() {
 			}
 		}
 		if x != 9 && y != 9 {
-			if x != 9 && y != 19 {
-				if x != 19 && y != 29 {
+			if x != 39 && y != 9 {
+				if x != 39 && y != 39 {
 					break
 				}
 			}
@@ -94,8 +94,8 @@ func main() {
 				}
 			}
 			if x != 9 && y != 9 {
-				if x != 9 && y != 19 {
-					if x != 19 && y != 29 {
+				if x != 39 && y != 9 {
+					if x != 39 && y != 39 {
 						setTwo[i].x = x
 						setTwo[i].y = y
 						break
