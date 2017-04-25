@@ -1,0 +1,97 @@
+(a) History
+	Go (golang) is a programming language created at Google in 2007 by
+ Robert Griesemer, Rob Pike, and Ken Thompson.It was first announced in 
+Novermber 2009.
+	The purpose of creating the language is to design a systems program-
+-ming languae for large distributed system.It is now used in some of Google's
+ production systems.
+	There will be a new version of Go in every six months and the current
+newest version is go 1.8.1 .
+	Any thing about golang can be found at https://golang.org.
+
+(b) Paradigm
+	It is a liitle bit hard to place a specific paradigm about golang.
+	Firstly, it is imperative: it has loops, statements and etc (2). 
+	And go is little Objected Oriented : Since it looks more like C than
+C++ and Java. For exampple, there are basic types such as int. And there is
+also object but object is just called struct in golang (1).
+	Concurrent programming: Go has native support for concurrent operations.
+The concurrency in Go includes multi-threading, multi-processing, and 
+asynchrony (3).
+
+1. https://golang.org/doc/faq#Is_Go_an_object-oriented_language
+2. https://golang.org/ref/spec#Statements
+3. https://vimeo.com/49718712
+
+
+(c) Typing System
+	Golang is strongly typed and garbage-collected. 
+	Funtions are not necessarily first-class objects but golang does support
+ it.
+	Programmers are allowed to create new types in golang?
+	Unfortunately it's not easily possible to create new types in golang since 
+Go is a statically typed language and the linker will eliminate dead code.
+
+
+(d) Control Structures
+	In golang, there is switch statements just like it in Java.
+	And there is a "select" stament in golang which lets a goroutine wait on 
+mutiple communication operation.
+	For loop and if and else statements are slightly different with C. One 
+example is below:
+
+	package main
+
+	import "fmt"
+
+	func pow(x, n, lim float64) float64 {
+		if v := math.Pow(x, n); v < lim {
+			return v
+		} else {
+			fmt.Printf("%g >= %g\n", v, lim)
+		}
+	// can't use v here, though
+		return lim
+	}
+
+
+	func main() {
+		sum := 0
+		for i := 0; i < 10; i++ {
+			sum += i
+		}
+		fmt.Println(sum)
+	}
+
+https://tour.golang.org/flowcontrol/
+
+	An interesting point about golang is there is no while loop in go
+ but you can use a "for" to do a while loop.
+	And yes, you have "continue" and "break" in go and they do the same
+thing here just like C.
+
+(e) Support for data Abstractions	
+	As said in Typing System, it's not easy for a programmer to create a
+ new abstraction (object). But the language itself does offer programmers a
+ lot of abstract types.
+	A list of types of golang can be found here:
+	https://golang.org/pkg/go/types/
+
+(f) Syntax
+
+(g) semantics
+
+
+(f) Syntax ¨C think about the syntax used by your language. What are the syntax choices that appeal
+to you? Are there any syntactic choices that you¡¯d like to see changed (why, and to what)?
+(g) Semantics ¨C briefly explain how your language is scoped (static or dynamic?), which kinds of constants
+are supported, how storage is allocated (which combination of static, stack-dynamic, and/or
+heap-dynamic?), and how garbage is managed.
+(h) Desirable Language Characteristics ¨C In Topic 2, we covered four categories of language characteristics
+that are generally thought of as ¡®desirable¡¯: (i) Efficiency, (ii) Regularity, (iii) Security/Reliability,
+and (iv) Extensibility. Choose any three of these four, and discuss features of your
+language that support (or limit!) them.
+
+
+
+
