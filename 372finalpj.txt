@@ -82,13 +82,13 @@ thing here just like C.
 (g) semantics
 
 
-(f) Syntax ¨C think about the syntax used by your language. What are the syntax choices that appeal
-to you? Are there any syntactic choices that you¡¯d like to see changed (why, and to what)?
-(g) Semantics ¨C briefly explain how your language is scoped (static or dynamic?), which kinds of constants
+(f) Syntax C think about the syntax used by your language. What are the syntax choices that appeal
+to you? Are there any syntactic choices that you'd like to see changed (why, and to what)?
+(g) Semantics C briefly explain how your language is scoped (static or dynamic?), which kinds of constants
 are supported, how storage is allocated (which combination of static, stack-dynamic, and/or
 heap-dynamic?), and how garbage is managed.
-(h) Desirable Language Characteristics ¨C In Topic 2, we covered four categories of language characteristics
-that are generally thought of as ¡®desirable¡¯: (i) Efficiency, (ii) Regularity, (iii) Security/Reliability,
+(h) Desirable Language Characteristics C In Topic 2, we covered four categories of language characteristics
+that are generally thought of as "desirable": (i) Efficiency, (ii) Regularity, (iii) Security/Reliability,
 and (iv) Extensibility. Choose any three of these four, and discuss features of your
 language that support (or limit!) them.
 
