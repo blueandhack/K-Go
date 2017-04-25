@@ -241,7 +241,7 @@ func main() {
 	fmt.Println("3 pointes close office 1: ")
 
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(%d,%d) ", getPoints[0][i].x, getPoints[0][i].y)
+		fmt.Printf("(%d,%d,distance: %f) ", getPoints[0][i].x, getPoints[0][i].y, getPoints[0][i].distance)
 	}
 
 	fmt.Println()
@@ -249,7 +249,7 @@ func main() {
 	fmt.Println("3 pointes close office 2: ")
 
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(%d,%d) ", getPoints[1][i].x, getPoints[1][i].y)
+		fmt.Printf("(%d,%d,distance: %f) ", getPoints[1][i].x, getPoints[1][i].y, getPoints[1][i].distance)
 	}
 
 	fmt.Println()
@@ -257,7 +257,7 @@ func main() {
 	fmt.Println("3 pointes close office 3: ")
 
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(%d,%d) ", getPoints[2][i].x, getPoints[2][i].y)
+		fmt.Printf("(%d,%d,distance: %f) ", getPoints[2][i].x, getPoints[2][i].y, getPoints[2][i].distance)
 	}
 
 	fmt.Println()
