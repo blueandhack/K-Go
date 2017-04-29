@@ -1,3 +1,14 @@
+/*
+ * generator.go
+ *
+ * CSc 372 Spring 2017 - Final Project
+ *
+ * Author: Yujia Lin, Dong Liang
+ *
+ * ---
+ * The program will generate two random sets and each set includes 30 points.
+ */
+
 package main
 
 import (
@@ -15,10 +26,13 @@ type point struct {
 
 func main() {
 
+	// set random generator
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	setOne := [30]point{}
 	setTwo := [30]point{}
+
+	// first, generate a random point for set one
 	var x = 0
 	var y = 0
 	for {
@@ -33,7 +47,7 @@ func main() {
 		}
 	}
 
-	// for set one
+	// generate whole random points for set one
 	setOne[0].x = x
 	setOne[0].y = y
 
@@ -58,6 +72,7 @@ func main() {
 		}
 	}
 
+	// second, generate a random point for set two
 	for {
 		x = r.Intn(50)
 		y = r.Intn(50)
@@ -75,10 +90,10 @@ func main() {
 		}
 	}
 
-	// for set two
 	setTwo[0].x = x
 	setTwo[0].y = y
 
+	// generate whole random points for set two
 	for i := 1; i < 30; i++ {
 		for {
 			x = r.Intn(50)
@@ -105,14 +120,13 @@ func main() {
 		}
 	}
 
-	// write csv file
+	// write csv file that name is "setOne.csv"
 	file, err := os.Create("setOne.csv")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
 
-	//file.WriteString("\xEF\xBB\xBF")
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
@@ -124,14 +138,13 @@ func main() {
 		}
 	}
 
-	// write csv file
+	// write csv file that name is "setTwo.csv"
 	fileTwo, err := os.Create("setTwo.csv")
 	if err != nil {
 		panic(err)
 	}
 	defer fileTwo.Close()
 
-	//fileTwo.WriteString("\xEF\xBB\xBF")
 	writerTwo := csv.NewWriter(fileTwo)
 	defer writerTwo.Flush()
 

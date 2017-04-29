@@ -1,3 +1,15 @@
+/*
+ * main.go
+ *
+ * CSc 372 Spring 2017 - Final Project
+ *
+ * Author: Yujia Lin, Dong Liang
+ *
+ * ---
+ * The main program will use kNN algorithm, and we can use training set to get k points that
+ * nearest those points.
+ */
+
 package main
 
 import (
@@ -16,13 +28,13 @@ Now, the police offices need some of police mans back to offices because they ne
 So, the program will help them to find k police man what is short distance to back to office.
  */
 
-type kNNPoint struct {
+type Point struct {
 	x     int
 	y     int
 	setNO int
 }
 
-type sortedPoint struct {
+type kNNPoint struct {
 	distance float64
 	x        int
 	y        int
@@ -44,7 +56,7 @@ func main() {
 		}
 	}
 
-	var setOne = [30]kNNPoint{}
+	var setOne = [30]Point{}
 
 	// read set one
 	file, err := os.Open(setOneFileName)
@@ -62,7 +74,6 @@ func main() {
 			fmt.Println("Error:", err)
 			return
 		}
-		//fmt.Printf("%T\n", record[0])
 		number, _ := strconv.Atoi(record[0])
 		setOne[i].x = number
 		numberTwo, _ := strconv.Atoi(record[1])
@@ -71,7 +82,7 @@ func main() {
 		i++
 	}
 
-	var setTwo = [30]kNNPoint{}
+	var setTwo = [30]Point{}
 
 	// read set one
 	fileTwo, err := os.Open(setTwoFileName)
@@ -89,7 +100,6 @@ func main() {
 			fmt.Println("Error:", err)
 			return
 		}
-		//fmt.Printf("%T\n", record[0])
 		number, _ := strconv.Atoi(record[0])
 		setTwo[i].x = number
 		numberTwo, _ := strconv.Atoi(record[1])
@@ -111,7 +121,7 @@ func main() {
 	}
 
 	// three points are police offices
-	var offices = [3]kNNPoint{}
+	var offices = [3]Point{}
 
 	// office
 	// x=9, y=9
@@ -137,6 +147,7 @@ func main() {
 
 	points[offices[2].x][offices[2].y] = "@"
 
+	// print all three sets
 	fmt.Print("Police offices: \n")
 	for i := 0; i < 3; i++ {
 		fmt.Printf("(%d,%d)", offices[i].x, offices[i].y)
@@ -158,6 +169,7 @@ func main() {
 	fmt.Println()
 	fmt.Println()
 
+	// print the map
 	for x := 49; x >= 0; x-- {
 		fmt.Println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
 		fmt.Print("|")
@@ -168,15 +180,15 @@ func main() {
 	}
 	fmt.Println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
 
-	var getPointsOne = [3][30] sortedPoint{}
-	var getPointsTwo = [3][30] sortedPoint{}
+	var getPointsOne = [3][30] kNNPoint{}
+	var getPointsTwo = [3][30] kNNPoint{}
 
+	// calculate two sets between training set distance
 	for k := 0; k < 3; k++ {
 		for i := 0; i < 30; i++ {
 			absX := math.Abs(float64(offices[k].x - setOne[i].x))
 			absY := math.Abs(float64(offices[k].y - setOne[i].y))
 			distance := math.Sqrt(math.Pow(absX, 2) + math.Pow(absY, 2))
-			//fmt.Println(distance)
 			getPointsOne[k][i].distance = distance
 			getPointsOne[k][i].setNO = setOne[i].setNO
 			getPointsOne[k][i].x = setOne[i].x
@@ -187,24 +199,22 @@ func main() {
 			absX := math.Abs(float64(offices[k].x - setTwo[i].x))
 			absY := math.Abs(float64(offices[k].y - setTwo[i].y))
 			distance := math.Sqrt(math.Pow(absX, 2) + math.Pow(absY, 2))
-			//fmt.Println(distance)
 			getPointsTwo[k][i].distance = distance
 			getPointsTwo[k][i].setNO = setTwo[i].setNO
 			getPointsTwo[k][i].x = setTwo[i].x
 			getPointsTwo[k][i].y = setTwo[i].y
 		}
-		//fmt.Println()
 	}
 
-	var getPoints = [3][60] sortedPoint{}
+	var getPoints = [3][60] kNNPoint{}
 
+	// merge two sets
 	for i := 0; i < 3; i++ {
 		s := 0
 		for j := 0; j < 30; j++ {
 			getPoints[i][s].x = getPointsOne[i][j].x
 			getPoints[i][s].y = getPointsOne[i][j].y
 			getPoints[i][s].distance = getPointsOne[i][j].distance
-			//fmt.Println(getPointsOne[i][j].distance)
 			getPoints[i][s].setNO = getPointsOne[i][j].setNO
 			s++
 		}
@@ -212,22 +222,12 @@ func main() {
 			getPoints[i][s].x = getPointsTwo[i][j].x
 			getPoints[i][s].y = getPointsTwo[i][j].y
 			getPoints[i][s].distance = getPointsTwo[i][j].distance
-			//fmt.Println(getPointsTwo[i][j].distance)
 			getPoints[i][s].setNO = getPointsTwo[i][j].setNO
 			s++
 		}
-		//fmt.Println()
 	}
 
-	//for i := 0; i < 3; i++ {
-	//	for j := 0; j < 60; j++ {
-	//		fmt.Println(getPoints[i][j].x)
-	//		//fmt.Println(getPoints[i][j].y)
-	//		//fmt.Println(getPoints[i][j].distance)
-	//	}
-	//	fmt.Println("+++++++++++++++++++++++++++++++++")
-	//}
-
+	// use bubble sort to find short distance
 	for s := 0; s < 3; s++ {
 		for i := 1; i < len(getPoints[s]); i++ {
 			for j := 0; j < len(getPoints[s])-i; j++ {
@@ -238,28 +238,21 @@ func main() {
 		}
 	}
 
+	// print results
 	fmt.Println("3 pointes close office 1: ")
-
 	for i := 0; i < 3; i++ {
 		fmt.Printf("(%d,%d,distance: %f) ", getPoints[0][i].x, getPoints[0][i].y, getPoints[0][i].distance)
 	}
-
 	fmt.Println()
-
 	fmt.Println("3 pointes close office 2: ")
-
 	for i := 0; i < 3; i++ {
 		fmt.Printf("(%d,%d,distance: %f) ", getPoints[1][i].x, getPoints[1][i].y, getPoints[1][i].distance)
 	}
-
 	fmt.Println()
-
 	fmt.Println("3 pointes close office 3: ")
-
 	for i := 0; i < 3; i++ {
 		fmt.Printf("(%d,%d,distance: %f) ", getPoints[2][i].x, getPoints[2][i].y, getPoints[2][i].distance)
 	}
-
 	fmt.Println()
 
 }
