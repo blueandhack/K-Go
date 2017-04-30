@@ -143,9 +143,12 @@ on the stack.
 3. garbage
 	A big change in Go from c and c++ is the garbage collection. However, people
  would think that garbage colllection would cause the longer runtime/slower performa-
--nce. A great example is Java. Similar to golang, java is from C and it has the automatic garbage collection. And we know, java is slow :(.
+-nce. A great example is Java. Similar to golang, java is from C and it has the 
+automatic garbage collection. And we know, java is slow :(.
 	However, the devolopers of Go say this:
-	it's critical to eliminate that programmer overhead, and advances in garbage collection technology in the last few years give us confidence that we can implement it with low enough overhead and no significant latency.
+	it's critical to eliminate that programmer overhead, and advances in garbage 
+collection technology in the last few years give us confidence that we can implement 
+it with low enough overhead and no significant latency.
 	
 
 https://kuree.gitbooks.io/the-go-programming-language-report/content/11/text.html		
@@ -153,11 +156,28 @@ https://kuree.gitbooks.io/the-go-programming-language-report/content/11/text.htm
 
 
 
-(h) Desirable Language Characteristics     In Topic 2, we covered four categories of language characteristics
-that are generally thought of as 'desirable': (i) Efficiency, (ii) Regularity, (iii) Security/Reliability,
-and (iv) Extensibility. Choose any three of these four, and discuss features of your
-language that support (or limit!) them.
+(h) Desirable Language Characteristics 
 
+	(i)Efficiency
+	One thing that golang's developers have tried to do is to make the language 
+easier for people to get. That means the golang really supports the efficency. But 
+the language itself is not that abstract so I would say golang has a similar effic-
+-ency with Java.
+	
+	(ii)Security
+	Programmer get a better security/reliability in golang compare to those 
+ dynamic language.
+	However, this language won't be considered to have strong security. Yes, you
+ have to handle all the errors just like in C.
+	Unlike Java, go is not run on a virtual machine. This does make the language 
+run faster but just make your programming harder.
+
+
+	(iii)Extensibility
+	The language does support the extensibility. Like importing a package is easy.
+ By doing this, programmers can have hundred types of type from libraries. Also, golang
+ allows programmar to create their own types like what we can do in C.
+	Though go doesn't allow programmar to write the syntax and semantic.
 
 
 
