@@ -51,191 +51,282 @@
 
         <!-- History -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>History</h4>
-            <p>
-                Go (golang) is a programming language created at Google in 2007 by
-                Robert Griesemer, Rob Pike, and Ken Thompson.It was first announced in
-                Novermber 2009.
-                The purpose of creating the language is to design a systems program-
-                -ming languae for large distributed system.It is now used in some of Google's
-                production systems.
-                There will be a new version of Go in every six months and the current
-                newest version is go 1.8.1 .
-                Any thing about golang can be found at https://golang.org.
-            </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>History</h4>
+                </div>
+
+                <div class="panel-body">
+                    <p>
+                        Go (golang) is a programming language created at Google in 2007 by
+                        Robert Griesemer, Rob Pike, and Ken Thompson.It was first announced in
+                        Novermber 2009.<br>
+                        The purpose of creating the language is to design a systems program-
+                        -ming languae for large distributed system.It is now used in some of Google's
+                        production systems.<br>
+                        There will be a new version of Go in every six months and the current
+                        newest version is go 1.8.1 .<br>
+                        Any thing about golang can be found at https://golang.org.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Paradigm -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>Paradigm</h4>
-            <p>
-                It is a liitle bit hard to place a specific paradigm about golang.
-                Firstly, it is imperative: it has loops, statements and etc (2).
-                And go is little Objected Oriented : Since it looks more like C than
-                C++ and Java. For exampple, there are basic types such as int. And there is
-                also object but object is just called struct in golang (1).
-                Concurrent programming: Go has native support for concurrent operations.
-                The concurrency in Go includes multi-threading, multi-processing, and
-                asynchrony (3).
-            </p>
-
-            1. https://golang.org/doc/faq#Is_Go_an_object-oriented_language
-            2. https://golang.org/ref/spec#Statements
-            3. https://vimeo.com/49718712
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Paradigm</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        It is a liitle bit hard to place a specific paradigm about golang.
+                        Firstly, it is imperative: it has loops, statements and etc (2).
+                        And go is little Objected Oriented : Since it looks more like C than
+                        C++ and Java. For exampple, there are basic types such as int. And there is
+                        also object but object is just called struct in golang (1).
+                        Concurrent programming: Go has native support for concurrent operations.
+                        The concurrency in Go includes multi-threading, multi-processing, and
+                        asynchrony (3).
+                    </p>
+                    <p>
+                        1. https://golang.org/doc/faq#Is_Go_an_object-oriented_language<br>
+                        2. https://golang.org/ref/spec#Statements<br>
+                        3. https://vimeo.com/49718712><br>
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Typing System -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>Typing System</h4>
-            <p>
-                Golang is strongly typed and garbage-collected.
-                Funtions are not necessarily first-class objects but golang does support
-                it.
-                Programmers are allowed to create new types in golang?
-                Unfortunately it's not easily possible to create new types in golang since
-                Go is a statically typed language and the linker will eliminate dead code.
-            </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Typing System</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Golang is strongly typed and garbage-collected.<br>
+                        Funtions are not necessarily first-class objects but golang does support
+                        it.<br>
+                        Programmers are allowed to create new types in golang?<br>
+                        Unfortunately it's not easily possible to create new types in golang since
+                        Go is a statically typed language and the linker will eliminate dead code.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Control Structures -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>Control Structures</h4>
-            <p>
-                In golang, there is switch statements just like it in Java.
-                And there is a "select" stament in golang which lets a goroutine wait on
-                mutiple communication operation.
-                For loop and if and else statements are slightly different with C. One
-                example is below:
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Control Structures</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        In golang, there is switch statements just like it in Java.
+                        And there is a "select" stament in golang which lets a goroutine wait on
+                        mutiple communication operation.<br>
+                        For loop and if and else statements are slightly different with C. One
+                        example is below:
+                    </p>
 
-            <pre>
-    package main
+                    <pre>
+package main
 
-    import "fmt"
+import "fmt"
 
-    func pow(x, n, lim float64) float64 {
-        if v := math.Pow(x, n); v < lim {
-            return v
-        } else {
-            fmt.Printf("%g >= %g\n", v, lim)
-        }
-        // can't use v here, though
-        return lim
+func pow(x, n, lim float64) float64 {
+    if v := math.Pow(x, n); v < lim {
+        return v
+    } else {
+        fmt.Printf("%g >= %g\n", v, lim)
     }
+    // can't use v here, though
+    return lim
+}
 
 
-    func main() {
-        sum := 0
-        for i := 0; i < 10; i++ {
-            sum += i
-        }
-        fmt.Println(sum)
+func main() {
+    sum := 0
+    for i := 0; i < 10; i++ {
+        sum += i
     }
+    fmt.Println(sum)
+}
         </pre>
 
-            https://tour.golang.org/flowcontrol/
+                    <p>
+                        https://tour.golang.org/flowcontrol/<br>
 
-            An interesting point about golang is there is no while loop in go
-            but you can use a "for" to do a while loop.
-            And yes, you have "continue" and "break" in go and they do the same
-            thing here just like C.
-            </p>
+                        An interesting point about golang is there is no while loop in go
+                        but you can use a "for" to do a while loop.
+                        And yes, you have "continue" and "break" in go and they do the same
+                        thing here just like C.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Support for Data Abstractions -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>Support for Data Abstractions</h4>
-            <p> As said in Typing System, it's not easy for a programmer to create a
-                new abstraction (object). But the language itself does offer programmers a
-                lot of abstract types.
-                A list of types of golang can be found here:
-                https://golang.org/pkg/go/types/
-            </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Support for Data Abstractions</h4>
+                </div>
+                <div class="panel-body">
+                    <p> As said in Typing System, it's not easy for a programmer to create a
+                        new abstraction (object). But the language itself does offer programmers a
+                        lot of abstract types.<br>
+                        A list of types of golang can be found here:<br>
+                        https://golang.org/pkg/go/types/
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Syntax -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>Syntax</h4>
-            <p>
-                Golang's syntax is using Extended Backus-Naur Form. It seems like to
-                be more mordenized than C and Java and C++.
-                There is one thing about golang that I personally really hate about
-                it. That is, as a C family language, the developers seem to try their best to
-                make golang'syntax unlike C's. No idea why they want to do that. Maybe they
-                want golang more mordenized? One example is:
-                in c you do: in go you do:
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Syntax</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Golang's syntax is using Extended Backus-Naur Form. It seems like to
+                        be more mordenized than C and Java and C++.
+                        There is one thing about golang that I personally really hate about
+                        it. That is, as a C family language, the developers seem to try their best to
+                        make golang'syntax unlike C's. No idea why they want to do that. Maybe they
+                        want golang more mordenized? One example is:
+                        in c you do: in go you do:
+                    </p>
+                    <pre>
+type someStruct struct{
+    int i;
+    char j;
+}
+int x =10;
+char c='c';
 
-                type someStruct struct{ type someStruct struct{
-                int i; i int
-                char j; j char
-                } }
-                int x =10; var i = 10
-                char c='c'; var j = 'c'
-
-                Also, '=' is the assignment operator but ':='. All those difference
-                make programmers from C/C++ not that easy to get golang fast. So I would they
-                can make the syntax more similar to other C family languages.
-            </p>
+type someStruct struct{
+    i int
+    j char
+}
+var i = 10
+var j = 'c'
+            </pre>
+                    <p>
+                        Also, '=' is the assignment operator but ':='. All those difference
+                        make programmers from C/C++ not that easy to get golang fast. So I would they
+                        can make the syntax more similar to other C family languages.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Semantics -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>Semantics</h4>
-            <p>1. scope
-                Golang is lexically scoped(staticly scoped). A small example is here:
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Semantics</h4>
+                </div>
+                <div class="panel-body">
+                    <h5>1. scope</h5>
+                    <p>
+                        Golang is lexically scoped(staticly scoped). A small example is here:
+                    </p>
+                    <pre>
+// go run static-scope.go
+package main
+import "fmt"
+var a = 1
 
-                // go run static-scope.go
-                package main
-                import "fmt"
-                var a = 1
-                func foo(){
-                a = 2
-                fmt.Println("in foo, a is", a)
-                }
+func foo(){
+    a = 2
+    fmt.Println("in foo, a is", a)
+}
 
-                func main(){
-                var a = 0
-                fmt.Println("in main, a is", a)
-                foo()
-                fmt.Println("after foo() call, a is", a)
-                }
-                /////
+func main(){
+    var a = 0
+    fmt.Println("in main, a is", a)
+    foo()
+    fmt.Println("after foo() call, a is", a)
+}
+/////
+            </pre>
+                    <p>
+                        And by runing this piece of golang code, you would get a result as:
+                        in main, a is 0
+                        in foo, a is 2
+                        after foo() call, a is 0.
+                        <br>
+                    </p>
 
-                And by runing this piece of golang code, you would get a result as:
-                in main, a is 0
-                in foo, a is 2
-                after foo() call, a is 0.
+                    <h5>2. storage</h5>
+                    <p>
+                        And how storage is allocated in golang? Well, you shouldn't really worried
+                        about this but a short answer here is it's a combination case of heap and stack.
+                        So in the current compilers, if a variable has its address taken, then that
+                        variable is allocated on the heap. And in some other cases, a variable can reside
+                        on the stack.
+                    </p>
 
-                2. storage
-                And how storage is allocated in golang? Well, you shouldn't really worried
-                about this but a short answer here is it's a combination case of heap and stack.
-                So in the current compilers, if a variable has its address taken, then that
-                variable is allocated on the heap. And in some other cases, a variable can reside
-                on the stack.
-
-
-                3. garbage
-                A big change in Go from c and c++ is the garbage collection. However, people
-                would think that garbage colllection would cause the longer runtime/slower performa-
-                -nce. A great example is Java. Similar to golang, java is from C and it has the automatic garbage
-                collection. And we know, java is slow :(.
-                However, the devolopers of Go say this:
-                it's critical to eliminate that programmer overhead, and advances in garbage collection technology in
-                the last few years give us confidence that we can implement it with low enough overhead and no
-                significant latency.
+                    <h5>3. garbage</h5>
+                    <p>
+                        A big change in Go from c and c++ is the garbage collection. However, people
+                        would think that garbage colllection would cause the longer runtime/slower performa-
+                        -nce. A great example is Java. Similar to golang, java is from C and it has the
+                        automatic garbage collection. And we know, java is slow :(.
+                        However, the devolopers of Go say this:
+                        it's critical to eliminate that programmer overhead, and advances in garbage
+                        collection technology in the last few years give us confidence that we can implement
+                        it with low enough overhead and no significant latency.
 
 
-                https://kuree.gitbooks.io/the-go-programming-language-report/content/11/text.html
-            </p>
+                        https://kuree.gitbooks.io/the-go-programming-language-report/content/11/text.html
+
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Desirable Language Characteristics -->
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <h4>Desirable Language Characteristics</h4>
-            <p>that are generally thought of as 'desirable': (i) Efficiency, (ii) Regularity, (iii)
-                Security/Reliability,
-                and (iv) Extensibility. Choose any three of these four, and discuss features of your
-                language that support (or limit!) them.
-            </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Desirable Language Characteristics</h4>
+                </div>
+                <div class="panel-body">
+                    <h5>(i) Efficiency</h5>
+                    <p>
+                        One thing that golang's developers have tried to do is to make the language
+                        easier for people to get. That means the golang really supports the efficency. But
+                        the language itself is not that abstract so I would say golang has a similar effic-
+                        -ency with Java.
+                        <br>
+                    </p>
+                    <h5>(ii) Security</h5>
+                    <p>
+                        Programmer get a better security/reliability in golang compare to those
+                        dynamic language.
+                        However, this language won't be considered to have strong security. Yes, you
+                        have to handle all the errors just like in C.
+                        Unlike Java, go is not run on a virtual machine. This does make the language
+                        run faster but just make your programming harder.
+                        <br>
+                    </p>
+                    <h5>(iii) Extensibility</h5>
+                    <p>
+                        The language does support the extensibility. Like importing a package is easy.
+                        By doing this, programmers can have hundred types of type from libraries. Also, golang
+                        allows programmar to create their own types like what we can do in C.
+                        Though go doesn't allow programmar to write the syntax and semantic.
+                        <br>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
