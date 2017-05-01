@@ -1,14 +1,12 @@
 /*
- * main.go
- *
- * CSc 372 Spring 2017 - Final Project
- *
- * Author: Yujia Lin, Dong Liang
- *
- * ---
- * The main program will use kNN algorithm, and we can use training set to get k points that
- * nearest those points.
- */
+filename: main.go
+CSc 372 Spring 2017 - Final Project
+Author: Yujia Lin, Dong Liang
+---
+The main program will use kNN algorithm, and we can use training set to get k points that
+nearest those points.
+For the program, the k is 3.
+*/
 
 package main
 
@@ -26,15 +24,20 @@ Assume we are in a city, and the city has three police offices,
 and some police man walking everywhere.
 Now, the police offices need some of police mans back to offices because they need a important meeting,
 So, the program will help them to find k police man what is short distance to back to office.
+(for the program, every office just needs 3 polices, so the k is 3)
 Also, we can use the kNN algorithm for some way, such as, it helps customers to find the nearest supermarket.
  */
 
+// the struct is point that includes x, y and setNO
+// this structure is used to import data
 type Point struct {
 	x     int
 	y     int
 	setNO int
 }
 
+// the struct is kNNPoint that includes distance, x, y and setNO
+// this structure is used to obtain the distance of each point from the training set
 type kNNPoint struct {
 	distance float64
 	x        int
@@ -42,12 +45,13 @@ type kNNPoint struct {
 	setNO    int
 }
 
+// this is main function
 func main() {
 
 	setOneFileName := "setOne.csv"
 	setTwoFileName := "setTwo.csv"
 
-	// the points is a map
+	// the points build a map
 	var points = [50][50]string{}
 
 	// first the city is empty
@@ -69,6 +73,8 @@ func main() {
 	defer file.Close()
 	reader := csv.NewReader(file)
 	i = 0
+
+	// store setOne.csv file to setOne array
 	for {
 		record, err := reader.Read()
 		if err == io.EOF {
@@ -96,6 +102,8 @@ func main() {
 	defer fileTwo.Close()
 	readerTwo := csv.NewReader(fileTwo)
 	i = 0
+
+	// store setTwo.csv file to setTwo array
 	for {
 		record, err := readerTwo.Read()
 		if err == io.EOF {
@@ -112,12 +120,14 @@ func main() {
 		i++
 	}
 
+	// mark setOne on the map by use char "X"
 	for i := 0; i < 30; i++ {
 		x := setOne[i].x
 		y := setOne[i].y
 		points[x][y] = "X"
 	}
 
+	// mark setTwo on the map by use char "O"
 	for i := 0; i < 30; i++ {
 		x := setTwo[i].x
 		y := setTwo[i].y
@@ -126,6 +136,8 @@ func main() {
 
 	// three points are police offices
 	var offices = [3]Point{}
+
+	// mark offices on the map by use "@"
 
 	// office
 	// x=9, y=9
@@ -152,26 +164,27 @@ func main() {
 	points[offices[2].x][offices[2].y] = "@"
 
 	// print all three sets
+
+	// training set
 	fmt.Print("Police offices: \n")
 	for i := 0; i < 3; i++ {
 		fmt.Printf("(%d,%d)", offices[i].x, offices[i].y)
 	}
-	fmt.Println()
-	fmt.Println()
+	fmt.Print("\n\n")
 
-	fmt.Print("Fist set (Team 1): \n")
+	// first set
+	fmt.Print("First set (Team 1): \n")
 	for i := 0; i < 30; i++ {
 		fmt.Printf("(%d,%d)", setOne[i].x, setOne[i].y)
 	}
-	fmt.Println()
-	fmt.Println()
+	fmt.Print("\n\n")
 
+	// second set
 	fmt.Print("Second set (Team 2): \n")
 	for i := 0; i < 30; i++ {
 		fmt.Printf("(%d,%d)", setTwo[i].x, setTwo[i].y)
 	}
-	fmt.Println()
-	fmt.Println()
+	fmt.Print("\n\n")
 
 	// print the map
 	for x := 49; x >= 0; x-- {
@@ -184,6 +197,7 @@ func main() {
 	}
 	fmt.Println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
 
+	// the two kNNPoint arrays will contain all of set
 	var getPointsOne = [3][30] kNNPoint{}
 	var getPointsTwo = [3][30] kNNPoint{}
 
@@ -243,20 +257,17 @@ func main() {
 	}
 
 	// print results
-	fmt.Println("3 pointes close office 1: ")
+	fmt.Println("\n3 pointes close office 1: ")
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(%d,%d,distance: %f) ", getPoints[0][i].x, getPoints[0][i].y, getPoints[0][i].distance)
+		fmt.Printf("(x:%d, y:%d, distance: %f) ", getPoints[0][i].x, getPoints[0][i].y, getPoints[0][i].distance)
 	}
-	fmt.Println()
-	fmt.Println("3 pointes close office 2: ")
+	fmt.Println("\n\n3 pointes close office 2: ")
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(%d,%d,distance: %f) ", getPoints[1][i].x, getPoints[1][i].y, getPoints[1][i].distance)
+		fmt.Printf("(x:%d, y:%d, distance: %f) ", getPoints[1][i].x, getPoints[1][i].y, getPoints[1][i].distance)
 	}
-	fmt.Println()
-	fmt.Println("3 pointes close office 3: ")
+	fmt.Println("\n\n3 pointes close office 3: ")
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(%d,%d,distance: %f) ", getPoints[2][i].x, getPoints[2][i].y, getPoints[2][i].distance)
+		fmt.Printf("(x:%d, y:%d, distance: %f) ", getPoints[2][i].x, getPoints[2][i].y, getPoints[2][i].distance)
 	}
-	fmt.Println()
-
+	fmt.Print("\n")
 }
