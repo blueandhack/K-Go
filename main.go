@@ -26,6 +26,7 @@ Assume we are in a city, and the city has three police offices,
 and some police man walking everywhere.
 Now, the police offices need some of police mans back to offices because they need a important meeting,
 So, the program will help them to find k police man what is short distance to back to office.
+Also, we can use the kNN algorithm for some way, such as, it helps customers to find the nearest supermarket.
  */
 
 type Point struct {
@@ -46,6 +47,7 @@ func main() {
 	setOneFileName := "setOne.csv"
 	setTwoFileName := "setTwo.csv"
 
+	// the points is a map
 	var points = [50][50]string{}
 
 	// first the city is empty
@@ -56,6 +58,7 @@ func main() {
 		}
 	}
 
+	// initialization first set
 	var setOne = [30]Point{}
 
 	// read set one
@@ -82,6 +85,7 @@ func main() {
 		i++
 	}
 
+	// initialization second set
 	var setTwo = [30]Point{}
 
 	// read set one
