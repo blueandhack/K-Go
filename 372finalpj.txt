@@ -1,22 +1,21 @@
 (a) History
 	Go (golang) is a programming language created at Google in 2007 by
- Robert Griesemer, Rob Pike, and Ken Thompson.It was first announced in 
-Novermber 2009.
-	The purpose of creating the language is to design a systems program-
--ming languae for large distributed system.It is now used in some of Google's
+ Robert Griesemer, Rob Pike, and Ken Thompson.It was first announced in
+November 2009.
+	The purpose of creating the language is to design a systems programming language for large distributed system.It is now used in some of Google's
  production systems.
 	There will be a new version of Go in every six months and the current
 newest version is go 1.8.1 .
 	Any thing about golang can be found at https://golang.org.
 
 (b) Paradigm
-	It is a liitle bit hard to place a specific paradigm about golang.
-	Firstly, it is imperative: it has loops, statements and etc (2). 
+	It is a little bit hard to place a specific paradigm about golang.
+	Firstly, it is imperative: it has loops, statements and etc (2).
 	And go is little Objected Oriented : Since it looks more like C than
-C++ and Java. For exampple, there are basic types such as int. And there is
-also object but object is just called struct in golang (1).
+C++ and Java. For example, there are basic types such as int. And there is
+also object but object is just called "struct" in golang (1).
 	Concurrent programming: Go has native support for concurrent operations.
-The concurrency in Go includes multi-threading, multi-processing, and 
+The concurrency in Go includes multi-threading, multi-processing, and
 asynchrony (3).
 
 1. https://golang.org/doc/faq#Is_Go_an_object-oriented_language
@@ -25,19 +24,19 @@ asynchrony (3).
 
 
 (c) Typing System
-	Golang is strongly typed and garbage-collected. 
-	Funtions are not necessarily first-class objects but golang does support
+	Golang is strongly typed and garbage-collected.
+	Functions are not necessarily first-class objects but golang does support
  it.
 	Programmers are allowed to create new types in golang?
-	Unfortunately it's not easily possible to create new types in golang since 
+	Unfortunately it's not easily possible to create new types in golang since
 Go is a statically typed language and the linker will eliminate dead code.
 
 
 (d) Control Structures
 	In golang, there is switch statements just like it in Java.
-	And there is a "select" stament in golang which lets a goroutine wait on 
-mutiple communication operation.
-	For loop and if and else statements are slightly different with C. One 
+	And there is a "select" statement in golang which lets a group wait on
+multiple communication operation.
+	For loop and if and else statements are slightly different with C. One
 example is below:
 
 	package main
@@ -70,7 +69,7 @@ https://tour.golang.org/flowcontrol/
 	And yes, you have "continue" and "break" in go and they do the same
 thing here just like C.
 
-(e) Support for data Abstractions	
+(e) Support for data Abstractions
 	As said in Typing System, it's not easy for a programmer to create a
  new abstraction (object). But the language itself does offer programmers a
  lot of abstract types.
@@ -82,11 +81,11 @@ thing here just like C.
 
 (f) Syntax
 	Golang's syntax is using Extended Backus-Naur Form. It seems like to
- be more mordenized than C and Java and C++. 
-	There is one thing about golang that I personally really hate about 
+ be more modernized than C and Java and C++.
+	There is one thing about golang that I personally really hate about
 it. That is, as a C family language, the developers seem to try their best to
- make golang'syntax unlike C's. No idea why they want to do that. Maybe they 
-want golang more mordenized? One example is:
+ make golang's syntax unlike C's. No idea why they want to do that. Maybe they
+want golang more modernized? One example is:
  in c you do:                   in go you do:
 
 type someStruct struct{		type someStruct struct{
@@ -96,7 +95,7 @@ type someStruct struct{		type someStruct struct{
 	int x =10;			var i = 10
 	char c='c';			var j = 'c'
 
-	Also, '=' is the assignment operator but ':='. All those difference 
+	Also, '=' is the assignment operator but ':='. All those difference
 make programmers from C/C++ not that easy to get golang fast. So I would they
  can make the syntax more similar to other C family languages.
 
@@ -106,7 +105,7 @@ make programmers from C/C++ not that easy to get golang fast. So I would they
 
 
 (g) semantics
-	
+
 1. scope
 	Golang is lexically scoped(staticly scoped). A small example is here:
 
@@ -126,58 +125,54 @@ make programmers from C/C++ not that easy to get golang fast. So I would they
 	    fmt.Println("after foo() call, a is", a)
 	}
 	/////
-	
+
 	And by runing this piece of golang code, you would get a result as:
 	in main, a is 0
 	in foo, a is 2
 	after foo() call, a is 0.
-	
+
 2. storage
 	And how storage is allocated in golang? Well, you shouldn't really worried
  about this but a short answer here is it's a combination case of heap and stack.
 	So in the current compilers, if a variable has its address taken, then that
- variable is allocated on the heap. And in some other cases, a variable can reside 
+ variable is allocated on the heap. And in some other cases, a variable can reside
 on the stack.
 
 
 3. garbage
 	A big change in Go from c and c++ is the garbage collection. However, people
  would think that garbage colllection would cause the longer runtime/slower performa-
--nce. A great example is Java. Similar to golang, java is from C and it has the 
+-nce. A great example is Java. Similar to golang, java is from C and it has the
 automatic garbage collection. And we know, java is slow :(.
 	However, the devolopers of Go say this:
-	it's critical to eliminate that programmer overhead, and advances in garbage 
-collection technology in the last few years give us confidence that we can implement 
+	it's critical to eliminate that programmer overhead, and advances in garbage
+collection technology in the last few years give us confidence that we can implement
 it with low enough overhead and no significant latency.
-	
-
-https://kuree.gitbooks.io/the-go-programming-language-report/content/11/text.html		
 
 
+https://kuree.gitbooks.io/the-go-programming-language-report/content/11/text.html
 
 
-(h) Desirable Language Characteristics 
+
+
+(h) Desirable Language Characteristics
 
 	(i)Efficiency
-	One thing that golang's developers have tried to do is to make the language 
-easier for people to get. That means the golang really supports the efficency. But 
-the language itself is not that abstract so I would say golang has a similar effic-
--ency with Java.
-	
+	One thing that golang's developers have tried to do is to make the language
+easier for people to get. That means the golang really supports the efficiency. But
+the language itself is not that abstract so I would say golang has a similar efficiency with Java.
+
 	(ii)Security
-	Programmer get a better security/reliability in golang compare to those 
+	Programmer get a better security/reliability in golang compare to those
  dynamic language.
 	However, this language won't be considered to have strong security. Yes, you
  have to handle all the errors just like in C.
-	Unlike Java, go is not run on a virtual machine. This does make the language 
+	Unlike Java, go is not run on a virtual machine. This does make the language
 run faster but just make your programming harder.
 
 
 	(iii)Extensibility
 	The language does support the extensibility. Like importing a package is easy.
  By doing this, programmers can have hundred types of type from libraries. Also, golang
- allows programmar to create their own types like what we can do in C.
-	Though go doesn't allow programmar to write the syntax and semantic.
-
-
-
+ allows programmer to create their own types like what we can do in C.
+	Though go doesn't allow programmer to write the syntax and semantic.

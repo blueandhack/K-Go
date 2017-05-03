@@ -10,9 +10,11 @@ training set, just classified.
 ## What should we know? Situation
 
 Assume we are in a city, and the city has three police offices,
-so some police man walking everywhere.
-One day, the police offices need k police mans back to offices because they have a important meeting,
-So, the program will help them to find k police man what is short distance to back to every office.
+and some police man walking everywhere.
+Now, the police offices need some of police mans back to offices because they need a important meeting,
+So, the program will help them to find k police man what is short distance to back to office.
+(for the program, every office just needs 3 polices, so the k is 3)
+Also, we can use the kNN algorithm for some way, such as, it helps customers to find the nearest supermarket.
 
 ## How to run?
 
@@ -23,3 +25,12 @@ So, the program will help them to find k police man what is short distance to ba
 
 - Yujia Lin
 - Dong Liang
+
+
+## GitHub Link:
+
+https://github.com/blueandhack/K-Go
+
+## Website:
+
+https://blueandhack.com/K-Go/
