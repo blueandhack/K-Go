@@ -259,15 +259,15 @@ func main() {
 	// print results
 	fmt.Println("\n3 pointes close office 1: ")
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(x:%d, y:%d, distance: %f) ", getPoints[0][i].x, getPoints[0][i].y, getPoints[0][i].distance)
+		fmt.Printf("(x:%d, y:%d, distance: %f, team: %d) ", getPoints[0][i].x, getPoints[0][i].y, getPoints[0][i].distance, getPoints[0][i].setNO-1)
 	}
 	fmt.Println("\n\n3 pointes close office 2: ")
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(x:%d, y:%d, distance: %f) ", getPoints[1][i].x, getPoints[1][i].y, getPoints[1][i].distance)
+		fmt.Printf("(x:%d, y:%d, distance: %f, team: %d) ", getPoints[1][i].x, getPoints[1][i].y, getPoints[1][i].distance, getPoints[1][i].setNO-1)
 	}
 	fmt.Println("\n\n3 pointes close office 3: ")
 	for i := 0; i < 3; i++ {
-		fmt.Printf("(x:%d, y:%d, distance: %f) ", getPoints[2][i].x, getPoints[2][i].y, getPoints[2][i].distance)
+		fmt.Printf("(x:%d, y:%d, distance: %f, team: %d) ", getPoints[2][i].x, getPoints[2][i].y, getPoints[2][i].distance, getPoints[2][i].setNO-1)
 	}
 	fmt.Print("\n")
 }
